@@ -22,7 +22,7 @@ const orderRoutes= require('./api/routes/order');
 //   db.close();
 // });
 
-mongoose.connect(
+mongoose.connect(process.env.MONGODB_URI||
   "mongodb+srv://shoroqtrad:" +
     process.env.MONGO_ATLAS_PW +
    "@cluster0-ulusr.mongodb.net/test?retryWrites=true&w=majority" 
