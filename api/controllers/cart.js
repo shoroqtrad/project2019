@@ -6,8 +6,7 @@ exports.add = function (req, res, next) {
   Cart.findOne({ email: email })
     .exec()
     .then(cart => {
-      if (!cart ) {
-      } else if (cart) {
+           if (cart) {
         const indexFound = cart.items.findIndex(item => {
           return item.product_id === product_id;
                         });

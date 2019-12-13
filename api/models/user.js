@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
-     _id: mongoose.Schema.Types.ObjectId,
+    _id: mongoose.Schema.Types.ObjectId,
     email: { 
         type: String, 
         required: true, 
@@ -20,10 +20,13 @@ const userSchema = mongoose.Schema({
     resetPasswordExpires: Date 
    
 
-});
+
+})
+
 
 // userSchema.methods.comparePassword = function(password){
 //     return bcrypt.compareSync(password,this.hash_password);
 // }
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User',userSchema);
+
