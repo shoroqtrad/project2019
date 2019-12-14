@@ -2,8 +2,6 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-// const MongoClient = require('mongodb').MongoClient;
-// const url = "mongodb://localhost:27017//menawfenaBase";
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt-nodejs');
 const flash = require('express-flash');
@@ -15,19 +13,15 @@ const forgetRoutes = require('./api/routes/forgot');
 const cartRoutes = require('./api/routes/cart');
 const orderRoutes= require('./api/routes/order');
 
-
-// MongoClient.connect(url,function(err,db){
-//   if (err) throw err ;
-//   console.log(" hello");
-//   db.close();
-// });
-
-mongoose.connect(process.env.MONGODB_URI||
-  "mongodb+srv://shoroqtrad:" +
-    process.env.MONGO_ATLAS_PW +
-   "@cluster0-ulusr.mongodb.net/test?retryWrites=true&w=majority" 
-  
-);
+mongoose.connect("mongodb://shoroqtrad:9972053231@ds253348.mlab.com:53348/heroku_0qg9f53l"||process.env.MONGO_URL
+ , {
+  reconnectTries: 100,
+  reconnectInterval: 500,
+  autoReconnect: true,
+  useNewUrlParser: true,
+  dbName: 'test'
+ })
+  .catch(err => console.log('Mongo connection error', err))
   mongoose.Promise = global.Promise;
   
   app.use(morgan("dev"));
